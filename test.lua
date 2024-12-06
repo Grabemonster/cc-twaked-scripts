@@ -35,7 +35,6 @@ function scann()
     
 end
 
-
 while true do
     if turtle.getFuelLevel() < 20 then
         turtle.refuel(1)
