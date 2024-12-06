@@ -13,16 +13,19 @@ function is_ore(block_data)
     return false
 end
 
--- Aktualisiert die Koordinaten basierend auf der Blickrichtung
-function adjust_coords(direction)
-    if cord.facing == "north" then
-        cord.z = cord.z - direction
-    elseif cord.facing == "south" then
-        cord.z = cord.z + direction
-    elseif cord.facing == "east" then
-        cord.x = cord.x + direction
-    elseif cord.facing == "west" then
-        cord.x = cord.x - direction
+function get_cords(cord, direction)
+    if direction== "north" then
+        return {x = cord.x+1, y = cord.y, z = cord.z}
+    elseif direction == "west" then
+        return {x = cord.x, y = cord.y, z = cord.z+1}
+    elseif direction == "south" then
+        return {x = cord.x-1, y = cord.y, z = cord.z}
+    elseif direction == "east" then
+        return {x = cord.x, y = cord.y, z = cord.z-1}
+    else if direction == "up" then
+        return {x = cord.x, y = cord.y+1, z = cord.z}
+    elseif direction == "down" then
+        return {x = cord.x, y = cord.y-1, z = cord.z}
     end
 end
 
@@ -55,7 +58,7 @@ end
 
 -- Scannt die Umgebung nach Erzen
 function scann()
-    local function check_block(inspect_func, x, y, z)
+    local function check_block(inspect_func, cords)
         local success, block_data = inspect_func()
         if success and is_ore(block_data) then
             table.insert(blocks_to_break, {x = x, y = y, z = z, block_data = block_data})
@@ -63,20 +66,20 @@ function scann()
     end
 
     -- Vorne
-    check_block(turtle.inspect, cord.x, cord.y, cord.z + 1)
+    check_block(turtle.inspect, get_cords(cord, cord.facing))
     -- Unten
-    check_block(turtle.inspectDown, cord.x, cord.y - 1, cord.z)
+    check_block(turtle.inspectDown, get_cords(cord, "down"))
     -- Oben
-    check_block(turtle.inspectUp, cord.x, cord.y + 1, cord.z)
+    check_block(turtle.inspectUp, get_cords(cord, "up"))
 
     -- Rechts
     turn_right()
-    check_block(turtle.inspect, cord.x + 1, cord.y, cord.z)
+    check_block(turtle.inspect, get_cords(cord, cord.facing))
 
     -- Links
     turn_left()
     turn_left()
-    check_block(turtle.inspect, cord.x - 1, cord.y, cord.z)
+    check_block(turtle.inspect, get_cords(cord, cord.facing))
 
     -- Zurück zur ursprünglichen Ausrichtung
     turn_right()
@@ -93,7 +96,7 @@ while true do
 
     -- Bewegung (Beispiel: Gehe einen Schritt nach vorne und aktualisiere die Koordinaten)
     if turtle.forward() then
-        adjust_coords(1)
+        cord = get_cords(cord, cord.facing)
     else
         print("Blockiert! Kann nicht vorwärts gehen.")
         break -- Optional: Beende die Schleife, wenn die Schildkröte blockiert ist.
