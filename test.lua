@@ -1,7 +1,8 @@
 blocks_to_brake = {}
 
 function is_ore( block_data )
-    if block_data.tag == "c:ores" then
+    if block_data.tags["c:ores"] then
+        print(block_data.name)
         return true
     end
     return false
