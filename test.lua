@@ -1,13 +1,4 @@
-
 blocks_to_brake = {}
-
-while true do
-    if turtle.getFuelLevel() < 20 then
-        turtle.refuel(1)
-        print("No fuel")
-    end
-    scann()
-end
 
 function is_ore( block_data )
     if block_data.tag == "c:ores" then
@@ -43,3 +34,13 @@ function scann()
     turtle.turnRight()
     
 end
+
+
+while true do
+    if turtle.getFuelLevel() < 20 then
+        turtle.refuel(1)
+        print("No fuel")
+    end
+    scann()
+end
+
