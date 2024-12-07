@@ -31,3 +31,4 @@ end
 loade("test.lua")
 loade("loade.lua")
 loade("goto.lua")
+loade("mine.lua")
