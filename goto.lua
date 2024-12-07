@@ -46,7 +46,7 @@ function GetCords(directionName)
 end
 
 -- Dreht die Schildkröte und aktualisiert die Blickrichtung
-function Turn_right()
+function TurnRight()
     turtle.turnRight()
     if Direction == 0 then
         Direction = 3
@@ -56,7 +56,7 @@ function Turn_right()
 
 end
 
-function Turn_left()
+function TurnLeft()
     turtle.turnLeft()
     if Direction == 3 then
         Direction = 0
@@ -93,11 +93,11 @@ function RotateTo( directionName )
     local divDirection = DircetionNameToNumeric(directionName) - Direction
     if divDirection > 0 then
         for i = 1, divDirection do
-            turn_right()
+            TurnRight()
         end
     elseif divDirection < 0 then
         for i = 1, -divDirection do
-            turn_left()
+            TurnLeft()
         end
     end
 end
@@ -129,5 +129,3 @@ function GoTo( x, y, z)
         MoveForward(-divZ)
     end
 end
-
-GoTo(0, 2, 0)
