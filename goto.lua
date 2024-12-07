@@ -2,7 +2,7 @@ Blocks_to_break = {}
 Cord = {x = 0, y = 0, z = 0} -- Enthält die Koordinaten und Blickrichtung
 Direction = 0 -- North = 0, West = 1, South = 2, East = 3
 
-function DircetionNuumericToName(Direction)
+function DircetionNumericToName(Direction)
     if Direction == 0 then
         return "north"
     elseif Direction == 1 then
@@ -69,7 +69,7 @@ function MoveForward( n )
     n = n or 1
     for i = 1, n do
         turtle.forward()
-        Cord = GetCords(DircetionNuumericToName(Direction))
+        Cord = GetCords(DircetionNumericToName(Direction))
     end
 end
 
@@ -77,7 +77,7 @@ function Move( n )
     n = n or 1
     for i = 1, n do
         turtle.up()
-        Cord = GetCords(DircetionNuumericToName(Direction))
+        Cord = GetCords(DircetionNumericToName(Direction))
     end
 end
 
@@ -85,7 +85,7 @@ function MoveDown( n )
     n = n or 1
     for i = 1, n do
         turtle.down()
-        Cord = GetCords(DircetionNuumericToName(Direction))
+        Cord = GetCords(DircetionNumericToName(Direction))
     end
 end
 
