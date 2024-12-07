@@ -27,7 +27,7 @@ function DircetionNameToNumeric(directionName)
 end
 
 -- Aktualisiert die Koordinaten basierend auf Blickrichtung
-function Get_cords(directionName)
+function GetCords(directionName)
     local new_cord = {x = Cord.x, y = Cord.y, z = Cord.z}
     if directionName == "north" then
         new_cord.z = new_cord.z - 1
@@ -69,7 +69,7 @@ function MoveForward( n )
     n = n or 1
     for i = 1, n do
         turtle.forward()
-        Cord = get_cords(dircetionNuumericToName(Direction))
+        Cord = GetCords(DircetionNuumericToName(Direction))
     end
 end
 
@@ -77,7 +77,7 @@ function Move( n )
     n = n or 1
     for i = 1, n do
         turtle.up()
-        Cord = get_cords(dircetionNuumericToName(Direction))
+        Cord = GetCords(DircetionNuumericToName(Direction))
     end
 end
 
@@ -85,12 +85,12 @@ function MoveDown( n )
     n = n or 1
     for i = 1, n do
         turtle.down()
-        Cord = get_cords(dircetionNuumericToName(Direction))
+        Cord = GetCords(DircetionNuumericToName(Direction))
     end
 end
 
 function RotateTo( directionName )
-    local divDirection = dircetionNameToNumeric(directionName) - Direction
+    local divDirection = DircetionNameToNumeric(directionName) - Direction
     if divDirection > 0 then
         for i = 1, divDirection do
             turn_right()
