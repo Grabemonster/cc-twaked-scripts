@@ -30,3 +30,4 @@ end
 -- Dateien herunterladen
 loade("test.lua")
 loade("loade.lua")
+loade("goto.lua")
