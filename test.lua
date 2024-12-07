@@ -1,5 +1,6 @@
 blocks_to_break = {}
-cord = {x = 0, y = 0, z = 0, facing = "north"} -- Enthält die Koordinaten und Blickrichtung
+cord = {x = 0, y = 0, z = 0} -- Enthält die Koordinaten und Blickrichtung
+direction = 0 -- North = 0, West = 1, South = 2, East = 3
 
 -- Überprüft, ob ein Block ein Erz ist
 function is_ore(block_data)
@@ -13,8 +14,20 @@ function is_ore(block_data)
     return false
 end
 
+function dircetionNuumericToName(direction)
+    if direction == 0 then
+        return "north"
+    elseif direction == 1 then
+        return "west"
+    elseif direction == 2 then
+        return "south"
+    elseif direction == 3 then
+        return "east"
+    end
+end
+
 -- Aktualisiert die Koordinaten basierend auf Blickrichtung
-function get_cords(cord, direction)
+function get_cords(cord, directionName)
     local new_cord = {x = cord.x, y = cord.y, z = cord.z}
     if direction == "north" then
         new_cord.z = new_cord.z - 1
@@ -35,27 +48,20 @@ end
 -- Dreht die Schildkröte und aktualisiert die Blickrichtung
 function turn_right()
     turtle.turnRight()
-    if cord.facing == "north" then
-        cord.facing = "east"
-    elseif cord.facing == "east" then
-        cord.facing = "south"
-    elseif cord.facing == "south" then
-        cord.facing = "west"
-    elseif cord.facing == "west" then
-        cord.facing = "north"
+    if direction == 0 then
+        direction = 3
+    else
+        direction = direction - 1
     end
+
 end
 
 function turn_left()
     turtle.turnLeft()
-    if cord.facing == "north" then
-        cord.facing = "west"
-    elseif cord.facing == "west" then
-        cord.facing = "south"
-    elseif cord.facing == "south" then
-        cord.facing = "east"
-    elseif cord.facing == "east" then
-        cord.facing = "north"
+    if direction == 3 then
+        direction = 0
+    else
+        direction = direction + 1
     end
 end
 
@@ -70,7 +76,7 @@ function scann()
     end
 
     -- Scannt vorne
-    check_block(turtle.inspect, get_cords(cord, cord.facing))
+    check_block(turtle.inspect, get_cords(cord, dircetionNuumericToName(direction)))
 
     -- Scannt unten
     check_block(turtle.inspectDown, get_cords(cord, "down"))
@@ -80,12 +86,12 @@ function scann()
 
     -- Scannt rechts
     turn_right()
-    check_block(turtle.inspect, get_cords(cord, cord.facing))
+    check_block(turtle.inspect, get_cords(cord, dircetionNuumericToName(direction)))
 
     -- Scannt links
     turn_left()
     turn_left()
-    check_block(turtle.inspect, get_cords(cord, cord.facing))
+    check_block(turtle.inspect, get_cords(cord, dircetionNuumericToName(direction)))
 
     -- Zurück zur ursprünglichen Richtung
     turn_right()
@@ -104,7 +110,7 @@ while true do
 
     -- Bewegt sich vorwärts und aktualisiert die Koordinaten
     if turtle.forward() then
-        cord = get_cords(cord, cord.facing)
+        cord = get_cords(cord, dircetionNuumericToName(direction))
     else
         print("Blockiert! Kann nicht vorwärts gehen.")
         break -- Beendet die Schleife, wenn die Schildkröte blockiert ist
