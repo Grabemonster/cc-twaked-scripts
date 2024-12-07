@@ -71,6 +71,7 @@ function scann()
         local success, block_data = inspect_func()
         if success and is_ore(block_data) then
             table.insert(blocks_to_break, {cords = cords, block_data = block_data})
+            print("Erze gefunden! Koordinaten: " .. cords.x .. ", " .. cords.y .. ", " .. cords.z)
         end
     end
 
