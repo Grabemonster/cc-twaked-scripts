@@ -1,4 +1,7 @@
 local args = { ... }
+local FUEl_slot = 1
+local Block_slot = 2
+
 if #args == 0 then
     print("gib die position an: tr, tm, tl, mr, mm, ml, br, bm, bl, ")
     print("b: botom, m: middle, t: top, l: left, r: right")
@@ -51,85 +54,85 @@ end
 if args[1] == "tr" then
     while true do
         FUEl()
-        turtle.select(1)
+        turtle.select(FUEl_slot)
         UP()
         RIGHT()
         FORWARD()
-        turtle.select(0)
+        turtle.select(Block_slot)
         turtle.dig()
     end
 elseif args[1] == "tm" then
     while true do
         FUEl()
-        turtle.select(1)
+        turtle.select(FUEl_slot)
         UP()
         FORWARD()
-        turtle.select(0)
+        turtle.select(Block_slo)
         turtle.dig()
     end
 elseif args[1] == "tl" then
     while true do
         FUEl()
-        turtle.select(1)
+        turtle.select(FUEl_slot)
         UP()
         LEFT()
         FORWARD()
-        turtle.select(0)
+        turtle.select(Block_slo)
         turtle.dig()
     end
 elseif args[1] == "mr" then
     while true do
         FUEl()
-        turtle.select(1)
+        turtle.select(FUEl_slot)
         RIGHT()
         FORWARD()
-        turtle.select(0)
+        turtle.select(Block_slo)
         turtle.dig()
     end
 elseif args[1] == "mm" then
     while true do
         FUEl()
-        turtle.select(1)
+        turtle.select(FUEl_slot)
         FORWARD()
-        turtle.select(0)
+        turtle.select(Block_slo)
         turtle.dig()
     end
 elseif args[1] == "ml" then
     while true do
         FUEl()
-        turtle.select(1)
+        turtle.select(FUEl_slot)
         LEFT()
         FORWARD()
-        turtle.select(0)
+        turtle.select(Block_slo)
         turtle.dig()
     end
 elseif args[1] == "br" then
     while true do
         FUEl()
-        turtle.select(1)
+        turtle.select(FUEl_slot)
         DOWN()
         RIGHT()
         FORWARD()
-        turtle.select(0)
+        turtle.select(Block_slo)
         turtle.dig()
     end
 elseif args[1] == "bm" then
     while true do    
         FUEl()
-        turtle.select(1)
+        turtle.select(FUEl_slot)
         DOWN()
         FORWARD()
-        turtle.select(0)
+        turtle.select(Block_slo)
         turtle.dig()
     end
 elseif args[1] == "bl" then
     while true do
         FUEl()
-        turtle.select(1)
+        turtle.select(FUEl_slot)
         DOWN()
         LEFT()
         FORWARD()
-        turtle.select(0)
+        turtle.select(Block_slo)
         turtle.dig()
     end
 else
