@@ -16,19 +16,19 @@ function UP()
 end
 
 function RIGHT()
-    turtle.turnRight()
+    turtle.turnLeft()
     if not turtle.detect() then
         turtle.place()
     end
-    turtle.turnLeft()
+    turtle.turnRight()
 end
 
 function LEFT()
-    turtle.turnLeft()
+    turtle.turnRight()
     if not turtle.detect() then
         turtle.place()
     end
-    turtle.turnRight()
+    turtle.turnLeft()
 end
 
 function DOWN()
