@@ -60,6 +60,7 @@ if args[1] == "tr" then
         FORWARD()
         turtle.select(Block_slot)
         turtle.dig()
+        turtle.forward()
     end
 elseif args[1] == "tm" then
     while true do
@@ -69,6 +70,7 @@ elseif args[1] == "tm" then
         FORWARD()
         turtle.select(Block_slo)
         turtle.dig()
+        turtle.forward()
     end
 elseif args[1] == "tl" then
     while true do
@@ -79,6 +81,7 @@ elseif args[1] == "tl" then
         FORWARD()
         turtle.select(Block_slo)
         turtle.dig()
+        turtle.forward()
     end
 elseif args[1] == "mr" then
     while true do
@@ -88,6 +91,7 @@ elseif args[1] == "mr" then
         FORWARD()
         turtle.select(Block_slo)
         turtle.dig()
+        turtle.forward()
     end
 elseif args[1] == "mm" then
     while true do
@@ -96,6 +100,7 @@ elseif args[1] == "mm" then
         FORWARD()
         turtle.select(Block_slo)
         turtle.dig()
+        turtle.forward()
     end
 elseif args[1] == "ml" then
     while true do
@@ -105,6 +110,7 @@ elseif args[1] == "ml" then
         FORWARD()
         turtle.select(Block_slo)
         turtle.dig()
+        turtle.forward()
     end
 elseif args[1] == "br" then
     while true do
@@ -115,6 +121,7 @@ elseif args[1] == "br" then
         FORWARD()
         turtle.select(Block_slo)
         turtle.dig()
+        turtle.forward()
     end
 elseif args[1] == "bm" then
     while true do    
@@ -124,6 +131,7 @@ elseif args[1] == "bm" then
         FORWARD()
         turtle.select(Block_slo)
         turtle.dig()
+        turtle.forward()
     end
 elseif args[1] == "bl" then
     while true do
@@ -134,6 +142,7 @@ elseif args[1] == "bl" then
         FORWARD()
         turtle.select(Block_slo)
         turtle.dig()
+        turtle.forward()
     end
 else
     print("Ungültige Position angegeben!")
